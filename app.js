@@ -1,0 +1,75 @@
+const util = require('util')
+const moment = require('moment')
+const format = require('python-format')
+const argv = require('minimist')(process.argv.slice(2))
+const version = require('./lib/version.js')
+const AppBase = require('./lib/app_base.js')
+
+/**
+ * 用法
+ */
+function usage() {
+  console.log(
+`
+说明：
+ layacloud-node 命令行接口
+用法：
+ ./lanode [options] command [command options] [arguments ...]
+命令：
+ run          启动节点
+ version      显示版本信息
+ help,h       显示本帮助信息
+
+参数:
+  --config value                     TOML configuration file
+
+节点参数：
+  --ws                   Enable the WS-RPC server
+  --wsaddr value         WS-RPC server listening interface (default: "localhost")
+  --wsport value         WS-RPC server listening port (default: 8656)
+  --p2paddr value        P2P-RPC server listening interface (default: "localhost")
+  --p2pport value        P2P-RPC server listening port (default: 30656)
+`
+  )
+}
+
+async function main() {
+  await AppBase.init();
+  let command = parseArgs();
+  switch(command) {
+    case "help":
+      usage()
+      app.exit()
+      break
+    case "version":
+      console.log(version())
+      break
+    case "run":
+      run()
+      break;
+    default:
+      console.log("unknown command!")
+      app.exit(1)
+  }
+}
+
+function run() {
+}
+
+function parseArgs() {
+  app.config.net.wsaddr = ('wsaddr' in argv) && argv.wsaddr
+  app.config.net.wsport = ('wsport' in argv) && argv.wsport
+
+  if('h' in argv || argv._.indexOf('help') != -1) {
+    return "help"
+  }
+  if(argv._.indexOf('version') != -1) {
+    return 'version'
+  }
+  if(argv._.indexOf('run') != -1) {
+    return 'run'
+  }
+  return "unknow"
+}
+
+main()
