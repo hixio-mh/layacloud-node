@@ -4,6 +4,7 @@ const format = require('python-format')
 const argv = require('minimist')(process.argv.slice(2))
 const version = require('./lib/version.js')
 const AppBase = require('./lib/app_base.js')
+var p2pServer = require('./lib/koa_server');
 
 /**
  * 用法
@@ -54,6 +55,7 @@ async function main() {
 }
 
 function run() {
+    p2pServer(config).listen(config.p2pport);
 }
 
 function parseArgs() {

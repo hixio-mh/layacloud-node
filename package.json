@@ -11,16 +11,22 @@
     "url": "ssh://git@gitlab.layabox.com:10022/litao/layacloud-node.git"
   },
   "dependencies": {
+    "co": "^4.6.0",
     "config": "^1.27.0",
     "glob": "^7.1.2",
     "ioredis": "^3.2.1",
+    "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
+    "koa-router": "^7.4.0",
+    "koa-validate": "^1.0.7",
     "later": "^1.2.0",
     "log4js": "^2.3.11",
     "minimist": "^1.2.0",
     "moment": "^2.19.1",
     "python-format": "github:lidancheng/python-format",
-    "ws": "^5.2.1",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "superagent": "^3.8.3",
+    "ws": "^5.2.1"
   },
   "author": "litao",
   "license": "ISC"

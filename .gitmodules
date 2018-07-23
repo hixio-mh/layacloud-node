@@ -1,0 +1,3 @@
+[submodule "layacloud-common"]
+	path = layacloud-common
+	url = ssh://git@gitlab.layabox.com:10022/zonghai/layacloud-common.git
