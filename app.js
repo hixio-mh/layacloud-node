@@ -58,7 +58,7 @@ async function main() {
 
 function run() {
   try{
-    p2pServer().listen(config.net.p2pport);
+    p2pServer().listen(app.config.net.p2pport);
   }catch(e){
     console.log(e)
   }

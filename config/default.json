@@ -4,5 +4,8 @@
     "wsport": 8656,
     "p2paddr": "localhost",
     "p2pport": 30656
+  },
+  "center":{
+    "domain":"http://cloudcenter.loocall.com/"
   }
 }
