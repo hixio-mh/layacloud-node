@@ -4,6 +4,7 @@ const format = require('python-format')
 const argv = require('minimist')(process.argv.slice(2))
 const version = require('./lib/version.js')
 const AppBase = require('./lib/app_base.js')
+const WsServer = require('./lib/ws_server.js')
 var p2pServer = require('./lib/p2p_server');
 var config = require('./config/default.json');
 
@@ -59,10 +60,12 @@ async function main() {
 function run() {
   try{
     p2pServer().listen(app.config.net.p2pport);
+    app.wsServer = new WsServer()
+    app.wsServer.start()
+
   }catch(e){
     console.log(e)
   }
-    
 }
 
 function parseArgs() {
