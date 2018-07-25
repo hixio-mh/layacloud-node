@@ -1,5 +1,3 @@
 .idea/
-node_modules/*
-layacloud-common/*
-.gitignore
+node_modules/
 node.key
