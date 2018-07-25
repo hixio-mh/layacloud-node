@@ -1,5 +1,5 @@
 .idea/
-node_modules/*
-layacloud-common/*
-.gitignore
+node_modules/
 node.key
+package-lock.josn
+layacloud-common/*
