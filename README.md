@@ -3,6 +3,12 @@
 每台物理机器可以运行多个node，每个node均包含逻辑节点和监督节点功能。
 
 # 安装
+
+```
+$ git clone  ssh://git@gitlab.layabox.com:10022/litao/layacloud-node.git --recursive
+```
+
+
 ```
 $ npm install
 $ git submodule update --init --recursive
