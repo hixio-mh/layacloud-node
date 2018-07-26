@@ -73,19 +73,23 @@ function run() {
 }
 
 function parseArgs() {
-    app.config.net.wsaddr = ('wsaddr' in argv) && argv.wsaddr
-    app.config.net.wsport = ('wsport' in argv) && argv.wsport
+  if ('wsaddr' in argv) {
+    app.config.net.wsaddr = argv.wsaddr
+  }
+  if('wsport' in argv) {
+    app.config.net.wsport = argv.wsport
+  }
 
-    if ('h' in argv || argv._.indexOf('help') != -1) {
-        return "help"
-    }
-    if (argv._.indexOf('version') != -1) {
-        return 'version'
-    }
-    if (argv._.indexOf('run') != -1) {
-        return 'run'
-    }
-    return "unknow"
+  if ('h' in argv || argv._.indexOf('help') != -1) {
+    return "help"
+  }
+  if (argv._.indexOf('version') != -1) {
+    return 'version'
+  }
+  if (argv._.indexOf('run') != -1) {
+    return 'run'
+  }
+  return "unknow"
 }
 
 main()
