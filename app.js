@@ -62,7 +62,7 @@ function run() {
       logger.info("node stopped.");
       app.exit(1);
     });
-
+ 
     layaNode.init({}); //TODO: pass in the parsed arguments
     layaNode.start();
 
