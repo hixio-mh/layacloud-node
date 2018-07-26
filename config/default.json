@@ -6,6 +6,7 @@
     "p2pport": 30656
   },
   "center":{
-    "domain":"http://cloudcenter.loocall.com/"
+    "release_domain":"http://cloudcenter.loocall.com/",
+    "debug_domain":"http://127.0.0.1:9001/"
   }
 }
