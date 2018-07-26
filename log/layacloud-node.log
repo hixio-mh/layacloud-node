@@ -69,3 +69,19 @@
 [2018-07-26T13:11:15.407] [INFO] default - ws server started
 [2018-07-26T13:11:15.422] [INFO] default - nodekey load finish 0xF5da1B32a3CBBb786D06351A81f69029194faAfd
 [2018-07-26T13:13:15.776] [INFO] default - node stopped.
+[2018-07-26T23:37:47.975] [DEBUG] default - http server start listening on port: 30656
+[2018-07-26T23:37:48.006] [INFO] default - nodekey load finish 0x676897ACA8635f45D87b3Ad04B3803d886fc3A33
+[2018-07-26T23:37:48.008] [INFO] default - start regist to center
+[2018-07-26T23:37:48.024] [DEBUG] default - websocket server listen on 8656
+[2018-07-26T23:37:48.036] [INFO] default - ws server started
+[2018-07-26T23:37:48.037] [ERROR] default - 向中心节点注册失败 { Error: connect ECONNREFUSED 127.0.0.1:9001
+    at Object._errnoException (util.js:1031:13)
+    at _exceptionWithHostPort (util.js:1052:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1195:14)
+  errno: 'ECONNREFUSED',
+  code: 'ECONNREFUSED',
+  syscall: 'connect',
+  address: '127.0.0.1',
+  port: 9001 }
+[2018-07-26T23:37:48.038] [INFO] default - 30秒后重试
+[2018-07-26T23:38:04.097] [INFO] default - node stopped.
