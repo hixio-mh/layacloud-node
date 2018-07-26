@@ -3,9 +3,7 @@ const moment = require('moment')
 const argv = require('minimist')(process.argv.slice(2))
 const version = require('./lib/version.js')
 const AppBase = require('./lib/app_base.js')
-const WsServer = require('./lib/ws_server.js')
 const layaNode = require('./lib/layanode');
-const Peer = require('./lib/p2p/peer');
 
 
 /**
@@ -62,21 +60,14 @@ function run() {
     process.on('SIGINT', function () {
       layaNode.stop();
       logger.info("node stopped.");
-      process.exit(0)
+      app.exit(1);
     });
 
-    layaNode.init({ p2pport: app.config.net.p2pport });
+    layaNode.init({}); //TODO: pass in the parsed arguments
     layaNode.start();
-    app.wsServer = new WsServer()
-    app.wsServer.start()
-
-    setTimeout(function () {
-      let peer = new Peer('', 'localhost', app.config.net.p2pport);
-      layaNode.send(peer, { type: 'rpc_ReadStorage' });
-    }, 3000);
 
   } catch (e) {
-    console.log(e)
+    logger.error(e);
   }
 
 }
