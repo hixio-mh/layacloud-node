@@ -25,3 +25,13 @@
 [2018-07-26T00:07:19.502] [INFO] default - node stopped.
 [2018-07-26T00:07:19.661] [INFO] default - node stopped.
 [2018-07-26T00:07:19.805] [INFO] default - node stopped.
+[2018-07-26T00:08:05.462] [INFO] default - node stopped.
+[2018-07-26T00:08:05.662] [INFO] default - node stopped.
+[2018-07-26T00:08:05.809] [INFO] default - node stopped.
+[2018-07-26T00:08:05.977] [INFO] default - node stopped.
+[2018-07-26T00:08:06.135] [INFO] default - node stopped.
+[2018-07-26T11:30:04.738] [INFO] default - node stopped.
+[2018-07-26T11:30:53.763] [DEBUG] default - websocket server listen on 8656
+[2018-07-26T11:31:20.422] [DEBUG] default - websocket server listen on 8656
+[2018-07-26T11:31:20.429] [INFO] default - ws server started
+[2018-07-26T11:31:34.311] [INFO] default - node stopped.

@@ -62,6 +62,7 @@ function run() {
     process.on('SIGINT', function () {
       layaNode.stop();
       logger.info("node stopped.");
+      process.exit(0)
     });
 
     layaNode.init({ p2pport: app.config.net.p2pport });
