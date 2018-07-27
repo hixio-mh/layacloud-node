@@ -4,6 +4,7 @@ const argv = require('minimist')(process.argv.slice(2))
 const version = require('./lib/version.js')
 const AppBase = require('./lib/app_base.js')
 const layaNode = require('./lib/layanode');
+var co = require('co')
 
 
 /**
@@ -62,9 +63,14 @@ function run() {
       logger.info("node stopped.");
       app.exit(1);
     });
+    
+    co(function*(){
+      yield function(done){
+        layaNode.init({},done); //TODO: pass in the parsed arguments
+      }
+      layaNode.start();
+    })
  
-    layaNode.init({}); //TODO: pass in the parsed arguments
-    layaNode.start();
 
   } catch (e) {
     logger.error(e);
