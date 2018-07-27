@@ -7,14 +7,20 @@
 ```
 $ git clone  ssh://git@gitlab.layabox.com:10022/litao/layacloud-node.git --recursive
 ```
+如果上述命令执行后，没有创建lib/common目录，则手工添加submodule:
+```
+git submodule add \
+> ssh://git@gitlab.layabox.com:10022/zonghai/layacloud-common.git \
+> lib/common
+```
 
 
 ```
 $ npm install
 $ git submodule update --init --recursive
-$ cd layacloud-common
+$ cd ./lib/common
 $ npm install
-$ cd ..
+$ cd ../..
 $ node app.js -h
 ```
 

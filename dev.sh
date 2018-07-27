@@ -1,3 +1,3 @@
 #! /bin/bash
 export NODE_ENV=dev
-node app.js run
+node app.js run $@
