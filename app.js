@@ -6,7 +6,6 @@ const AppBase = require('./lib/app_base.js')
 const layaNode = require('./lib/layanode');
 var co = require('co')
 
-
 /**
  * 用法
  */
@@ -58,6 +57,7 @@ async function main() {
 
 function run() {
   try {
+    app.layaNode = layaNode
     process.on('SIGINT', function () {
       layaNode.stop();
       logger.info("node stopped.");
@@ -70,7 +70,6 @@ function run() {
       }
       layaNode.start();
     })
- 
 
   } catch (e) {
     logger.error(e);
