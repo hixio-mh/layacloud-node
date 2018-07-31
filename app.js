@@ -6,7 +6,6 @@ const AppBase = require('./lib/app_base.js')
 const layaNode = require('./lib/layanode');
 var co = require('co')
 
-
 /**
  * 用法
  */
@@ -70,7 +69,6 @@ function run() {
       }
       layaNode.start();
     })
- 
 
   } catch (e) {
     logger.error(e);
