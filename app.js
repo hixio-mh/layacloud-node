@@ -57,6 +57,7 @@ async function main() {
 
 function run() {
   try {
+    app.layaNode = layaNode
     process.on('SIGINT', function () {
       layaNode.stop();
       logger.info("node stopped.");
