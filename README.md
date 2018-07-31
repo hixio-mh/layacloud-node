@@ -14,7 +14,6 @@ git submodule add \
 > lib/common
 ```
 
-
 ```
 $ npm install
 $ git submodule update --init --recursive
@@ -22,6 +21,13 @@ $ cd ./lib/common
 $ npm install
 $ cd ../..
 $ node app.js -h
+```
+
+定期更新submodule代码 
+```
+$ cd layacloud-node
+$ git submodule foreach git pull
+
 ```
 
 # 与客户端交易
