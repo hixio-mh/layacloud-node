@@ -84,6 +84,12 @@ function parseArgs() {
   if('wsport' in argv) {
     app.config.net.wsport = argv.wsport
   }
+  if ('p2paddr' in argv) {
+    app.config.net.p2p2addr = argv.p2paddr
+  }
+  if('p2pport' in argv) {
+    app.config.net.p2pport = argv.p2pport
+  }
 
   if ('h' in argv || argv._.indexOf('help') != -1) {
     return "help"
