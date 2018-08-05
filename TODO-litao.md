@@ -1,11 +1,8 @@
 # 待办
-- 处理user.match命令
 - single房间可以正常运行
+- 处理user.match命令
 - single逻辑节点和监督节点之间的数据同步: onuserin, onuserout, onuserevent, oncreated, onstart
 - node级数据获取和存储(需要共识机制)
-
-- 监督逻辑实现
-- 监督者和逻辑节点之间的通讯
 - 房间的duration实现
 - 使用vm2替换vm
 
