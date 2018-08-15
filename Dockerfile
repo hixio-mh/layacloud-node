@@ -22,7 +22,11 @@ RUN git clone --recursive https://$GITLAB_TOKEN:$GITLAB_TOKEN@gitlab.layabox.com
     cd /layacloud-node/lib/common && \
     npm install
 
-CMD cd /layacloud-node && node ./app.js
+WORKDIR /layacloud-node
+
+ENV NODE_ENV=dev
+
+CMD node /layacloud-node/app.js run
 
 EXPOSE 8656
 EXPOSE 30656
