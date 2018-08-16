@@ -1,8 +1,8 @@
 {
   "net": {
-    "wsaddr": "localhost",
+    "wsaddr": "0.0.0.0",
     "wsport": 8656,
-    "p2paddr": "localhost",
+    "p2paddr": "0.0.0.0",
     "p2pport": 30656
   },
   "center":{
