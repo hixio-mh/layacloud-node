@@ -7,6 +7,6 @@
   },
   "center":{
     "release_domain":"http://cloudcenter.loocall.com/",
-    "debug_domain":"http://127.0.0.1:9001/"
+    "debug_domain":"http://layacloud-center_layacenter_1:9001/"
   }
 }

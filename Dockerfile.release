@@ -1,6 +1,9 @@
 FROM node:10.8.0-alpine
 
+ARG GITLAB_TOKEN=Sma-tyHcyJDPKD7tCnbG
+
 RUN apk update && \
+    apk add bash git && \
     apk add --no-cache libstdc++ && \
     apk add --no-cache --virtual .build-deps \
             binutils-gold \
@@ -10,27 +13,18 @@ RUN apk update && \
             gnupg \
             libgcc \
             linux-headers \
-            git \
             make \
-            python \
-            bash
+            python
 
-ADD . /layacloud-node
-
-RUN cd /layacloud-node && \
-    rm -rf node_modules && \
-    rm -rf db && \
-    rm -f node.key && \
+RUN git clone --recursive https://$GITLAB_TOKEN:$GITLAB_TOKEN@gitlab.layabox.com/litao/layacloud-node.git && \
+    cd /layacloud-node && \
     npm install && \
     cd /layacloud-node/lib/common && \
-    rm -rf node_modules && \
     npm install
-
-ENV NODE_ENV=dev
 
 WORKDIR /layacloud-node
 
-CMD node ./app.js run
+CMD node /layacloud-node/app.js run
 
 EXPOSE 8656
 EXPOSE 30656
