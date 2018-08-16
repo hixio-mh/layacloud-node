@@ -1,5 +1,4 @@
 # 待办
-- single逻辑节点和监督节点之间的数据同步: onuserin, onuserout, onuserevent, oncreated, onstart
 - node级数据获取和存储(需要共识机制)
 - 房间的duration实现
 - 使用vm2替换vm
