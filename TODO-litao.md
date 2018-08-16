@@ -1,9 +1,11 @@
 # 待办
-- 处理user.match命令
-- single逻辑节点和监督节点之间的数据同步: onuserin, onuserout, onuserevent, oncreated, onstart
 - node级数据获取和存储(需要共识机制)
 - 房间的duration实现
 - 使用vm2替换vm
+- 变量命名下划线统一
+
+2018.08.09
+- 处理user.match命令 ok
 
 2018.07.27
 - 玩家断线，从playerMgr及room中去除 ok
