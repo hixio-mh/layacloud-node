@@ -30,7 +30,8 @@ ENV NODE_ENV=dev
 
 WORKDIR /layacloud-node
 
-CMD node ./app.js run
+ENTRYPOINT ["node", "./app.js", "run"]
+#CMD node ./app.js run
 
 EXPOSE 8656
 EXPOSE 30656
