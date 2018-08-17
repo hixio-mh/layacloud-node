@@ -78,7 +78,7 @@ https://www.docker.com/products/docker-desktop
 第一次启动的时候， docker 会编译image。 N 可以指定启动的节点个数。
 
 
-###手动启动一个layacloud-node 节点
+### 手动启动一个layacloud-node 节点
 
 当执行完docker-compose up 后， docker会编译一个新的image， 可以通过一下命令查询：
 
