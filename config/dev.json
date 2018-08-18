@@ -1,1 +1,10 @@
-{}
+{
+  "net": {
+    "addr": "localhost",
+    "wsport": 8656,
+    "p2pport": 30656
+  },
+  "center":{
+    "url":"http://localhost:9001"
+  }
+}
