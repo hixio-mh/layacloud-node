@@ -1,12 +1,10 @@
 {
   "net": {
-    "wsaddr": "0.0.0.0",
+    "addr": "localhost",
     "wsport": 8656,
-    "p2paddr": "0.0.0.0",
     "p2pport": 30656
   },
   "center":{
-    "release_domain":"http://cloudcenter.loocall.com/",
-    "debug_domain":"http://layacloud-center_layacenter_1:9001/"
+    "url":"http://cloudcenter.loocall.com"
   }
 }

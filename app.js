@@ -1,106 +1,65 @@
-const util = require('util')
-const moment = require('moment')
-const argv = require('minimist')(process.argv.slice(2))
-const version = require('./lib/version.js')
-const AppBase = require('./lib/app_base.js')
+"use_strict";
+
+const program = require('commander');
+const config = require('config');
+const version = require('./lib/version.js');
+const AppBase = require('./lib/app_base.js');
 const layaNode = require('./lib/layanode');
-var co = require('co')
-
-/**
- * 用法
- */
-function usage() {
-    console.log(
-        `
-说明：
- layacloud-node 命令行接口
-用法：
- ./lanode [options] command [command options] [arguments ...]
-命令：
- run          启动节点
- version      显示版本信息
- help,h       显示本帮助信息
-
-参数:
-  --config value                     TOML configuration file
-
-节点参数：
-  --ws                   Enable the WS-RPC server
-  --wsaddr value         WS-RPC server listening interface (default: "localhost")
-  --wsport value         WS-RPC server listening port (default: 8656)
-  --p2paddr value        P2P server listening interface (default: "0.0.0.0") 
-  --p2pport value        P2P server listening port (default: 30656)
-`
-    )
-}
-
-async function main() {
-    await AppBase.init();
-    let command = parseArgs();
-    switch (command) {
-        case "help":
-            usage()
-            app.exit()
-            break
-        case "version":
-            console.log(version())
-            break
-        case "run":
-            run()
-            break;
-        default:
-            console.log("unknown command!")
-            app.exit(1)
-    }
-}
 
 
-function run() {
-  try {
-    app.layaNode = layaNode
-    process.on('SIGINT', function () {
-      layaNode.stop();
-      logger.info("node stopped.");
-      app.exit(1);
+program
+    .version(version())
+    .description('layacloud node program');
+
+program
+    .command('run')
+    .description('run layacloud node')
+    .option('--addr <addr>', 'the address of this node. IP or domain name')
+    .option('--peer-port <pport>', 'peer communication port')
+    .option('--game-port <gport>', 'game port to which game clients connect')
+    .option('--curl <curl>', 'coordinator(center) url')
+    .option('--no-storage', 'flag to indicate this node does not provide storage capability', false)
+    .option('--storage-db <name>', 'database name to create when running as storage node, default to "db"', 'db')
+    .action((options) => {
+        let args = {
+            addr: options.addr || config.get('net.addr'),
+            pport: options.peerPort || config.get('net.p2pport'),
+            gport: options.gamePort || config.get('net.wsport'),
+            curl: options.curl || config.get('center.url'),
+            storage: options.storage,
+            storagedb: options.storageDb,
+        };
+
+        run(args).catch(err => {
+            logger.error(err);
+        });
     });
-    
-    co(function*(){
-      yield function(done){
-        layaNode.init({},done); //TODO: pass in the parsed arguments
-      }
-      layaNode.start();
-    })
 
-  } catch (e) {
-    logger.error(e);
-  }
+program
+    .command('*')
+    .action(() => {
+        program.outputHelp();
+    });
 
+program.parse(process.argv);
+
+if (program.args.length < 1) {
+    program.outputHelp();
 }
 
-function parseArgs() {
-  if ('wsaddr' in argv) {
-    app.config.net.wsaddr = argv.wsaddr
-  }
-  if('wsport' in argv) {
-    app.config.net.wsport = argv.wsport
-  }
-  if ('p2paddr' in argv) {
-    app.config.net.p2p2addr = argv.p2paddr
-  }
-  if('p2pport' in argv) {
-    app.config.net.p2pport = argv.p2pport
-  }
+async function run(params) {
+    await AppBase.init(params);
 
-  if ('h' in argv || argv._.indexOf('help') != -1) {
-    return "help"
-  }
-  if (argv._.indexOf('version') != -1) {
-    return 'version'
-  }
-  if (argv._.indexOf('run') != -1) {
-    return 'run'
-  }
-  return "unknow"
+    process.on('SIGINT', function () {
+        layaNode.stop();
+        logger.info("node stopped.");
+        app.exit(1);
+    });
+
+    app.layaNode = layaNode;
+
+    await layaNode.init(params);
+    await layaNode.start();
+
+    logger.info(layaNode.getCapabilities());
 }
-
-main()
