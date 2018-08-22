@@ -5,6 +5,7 @@ const config = require('config');
 const version = require('./lib/version.js');
 const AppBase = require('./lib/app_base.js');
 const layaNode = require('./lib/layanode');
+const RpcClient = require('./lib/rpc/rpc_client');
 
 
 program
@@ -33,6 +34,20 @@ program
         run(args).catch(err => {
             logger.error(err);
         });
+    });
+
+program.command('query')
+    .description('query pow of this node')
+    .action((options) => {
+
+        console.log(options);
+        const rpc = new RpcClient();
+        rpc.call('rpc_account_checkNodePow', null).then((data) => {
+            console.log(JSON.stringify(data, null, 4));
+        }).catch((e)=>{
+            console.error('error', e.message);
+        });
+
     });
 
 program
