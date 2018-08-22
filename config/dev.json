@@ -5,6 +5,6 @@
     "p2pport": 30656
   },
   "center":{
-    "url":"http://localhost:9001"
+    "url":"http://172.18.0.2:9001"
   }
 }

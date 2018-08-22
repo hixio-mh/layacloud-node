@@ -1,7 +1,9 @@
 version: "3"
 services:
   layanode:
-    build: .
+    build:
+      context: ./
+      dockerfile: Dockerfile.zq
 
 networks:
   default:
