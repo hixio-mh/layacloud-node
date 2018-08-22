@@ -1,0 +1,57 @@
+FROM node:10.8.0-alpine
+
+RUN apk update && \
+    apk add --no-cache libstdc++ && \
+    apk add --no-cache --virtual .build-deps \
+            binutils-gold \
+            curl \
+            g++ \
+            gcc \
+            gnupg \
+            libgcc \
+            linux-headers \
+            git \
+            make \
+            python \
+            bash
+
+RUN npm install -g bluebird@^3.5.1    && \
+    npm install -g co@^4.6.0    && \
+    npm install -g commander@^2.17.1    && \
+    npm install -g config@^1.27.0    && \
+    npm install -g cpu@^1.0.1    && \
+    npm install -g glob@^7.1.2    && \
+    npm install -g ioredis@^3.2.1    && \
+    npm install -g koa@^2.5.2    && \
+    npm install -g koa-bodyparser@^4.2.1    && \
+    npm install -g koa-router@^7.4.0    && \
+    npm install -g later@^1.2.0    && \
+    npm install -g --unsafe-perm leveldown@^4.0.1    && \
+    npm install -g levelup@^3.1.1    && \
+    npm install -g log4js@^3.0.2    && \
+    npm install -g minimist@^1.2.0    && \
+    npm install -g moment@^2.19.1    && \
+    npm install -g prompt@^1.0.0    && \
+    npm install -g request@^2.83.0    && \
+    npm install -g string-format@^2.0.0    && \
+    npm install -g superagent@^3.8.3    && \
+    npm install -g sysinfo@0.0.1    && \
+    npm install -g ws@^5.2.1    && \
+    npm install -g bluebird@^3.5.1 && \
+    npm install -g bn@^1.0.1 && \
+    npm install -g bn.js@latest && \
+    npm install -g commander@^2.16.0 && \
+    npm install -g del@^3.0.0 && \
+    npm install -g ignore-walk@^3.0.1 && \
+    npm install -g --unsafe-perm keccak@^1.4.0 && \
+    npm install -g prompt@^1.0.0 && \
+    npm install -g qiniu@^7.2.1 && \
+    npm install -g request@^2.87.0 && \
+    npm install -g request-promise@^4.2.2 && \
+    npm install -g rimraf@^2.6.2 && \
+    npm install -g --unsafe-perm secp256k1@^3.5.0 && \
+    npm install -g string-format@^2.0.0 && \
+    npm install -g tar@^4.4.4 && \
+    npm install -g uuid@^3.3.2
+
+ENV NODE_PATH=/usr/local/lib/node_modules
