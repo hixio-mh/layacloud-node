@@ -5,6 +5,15 @@
 下载Mac或Windows版本
 https://www.docker.com/products/docker-desktop
 
+ubuntu版本  
+```
+$ sudo apt install docker.io
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.11.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ docker-compose -v
+docker-compose version 1.11.1, build 7c5d5e4
+```
+
 
 
 ### 准备基本Image

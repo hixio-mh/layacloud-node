@@ -1,9 +1,8 @@
 version: "3"
 services:
   layanode:
-    build:
-      context: ./
-      dockerfile: Dockerfile.zq
+    build: .
+    command: --addr 0.0.0.0 --curl http://layacloud-center_layacenter_1:9001
 
 networks:
   default:
