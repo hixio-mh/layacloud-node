@@ -1,4 +1,4 @@
-FROM layanode:10.8.0-alpine
+FROM tyrande000/layanode-zq:latest
 
 COPY . /layacloud-node
 
