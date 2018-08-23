@@ -40,7 +40,7 @@ program.command('query')
     .description('query pow of this node')
     .action((options) => {
 
-        console.log(options);
+        //console.log(options);
         const rpc = new RpcClient();
         rpc.call('rpc_account_checkNodePow', null).then((data) => {
             console.log(JSON.stringify(data, null, 4));
