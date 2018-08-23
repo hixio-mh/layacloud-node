@@ -6,7 +6,7 @@ const version = require('./lib/version.js');
 const AppBase = require('./lib/app_base.js');
 const layaNode = require('./lib/layanode');
 const RpcClient = require('./lib/rpc/rpc_client');
-
+const CPMgr = require('./lib/common/child_process_mgr');
 
 program
     .version(version())
@@ -76,5 +76,9 @@ async function run(params) {
     await layaNode.init(params);
     await layaNode.start();
 
+	//启动ETH交易监听子进程
+	CPMgr.add_child('eth_child', './lib/eth_child.js');
+	console.log('初始化ETH监听子进程')
+	
     logger.info(layaNode.getCapabilities());
 }
