@@ -1,10 +1,10 @@
 {
   "net": {
     "addr": "localhost",
-    "wsport": 8656,
-    "p2pport": 30656
+    "wsport": 8657,
+    "p2pport": 30657
   },
   "center":{
-    "url":"http://172.18.0.2:9001"
+    "url":"http://192.168.0.197:9001"
   }
 }
