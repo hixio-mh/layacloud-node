@@ -1,11 +1,11 @@
 {
   "net": {
     "addr": "localhost",
-    "wsport": 8657,
-    "p2pport": 30657
+    "wsport": 8656,
+    "p2pport": 30656
   },
   "center":{
-    "url":"http://192.168.0.197:9001"
+    "url":"http://localhost:9001"
   },
   "provider": "http://52.77.247.130:8545",
   "contract_address": "0xdb95c7285beb3bccb5b1a71b239e6d9aa0e4a433"
