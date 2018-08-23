@@ -7,4 +7,4 @@ if [ ${CONTAINER_COUNT} -ne 0 ]; then
     sudo docker rm `sudo docker ps -qa`
 fi
 
-sudo docker -t layacloud-node_layanode .
+sudo docker build -t layacloud-node_layanode .
