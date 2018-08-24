@@ -3,10 +3,12 @@
 ### 已上传到Docker Hub的镜像
 
 - tyrande000/layanode-zq:latest
-	用于layanode项目，用于每次更改代码Rebuild镜像时的基础镜像，已包含各种代码库
+
+用于layanode项目，用于每次更改代码Rebuild镜像时的基础镜像，已包含各种代码库
 
 - tyrande000/layacenter-zq:latest
-	用于layacenter项目，用于每次更改代码Rebuild镜像时的基础镜像，已包含各种代码库
+
+用于layacenter项目，用于每次更改代码Rebuild镜像时的基础镜像，已包含各种代码库
 
 ### Layanode编译和启动
 
