@@ -102,7 +102,7 @@ async function rpc(command) {
     let url = format('{}/{}', loginNode.httpurl(), rpcMessage.type);
     let response = await httpClient.post(url, rpcMessage);
 
-    console.log(response);
+    console.log(JSON.stringify(response, null, 4));
 }
 
 
