@@ -78,7 +78,7 @@ async function run(params) {
 
 	//启动ETH交易监听子进程
 	CPMgr.add_child('eth_child', './lib/eth_child.js');
-	console.log('初始化ETH监听子进程')
+	logger.info('初始化ETH监听子进程')
 	
     logger.info(layaNode.getCapabilities());
 }
