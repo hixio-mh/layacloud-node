@@ -37,13 +37,15 @@ program
         });
     });
 
-program.command('query')
-    .description('query pow of this node')
+program.command('query <what>')
+    .description('query information of this node [pow, contract]')
     .option('--endpoint <endpoint>', 'rpc endpoint address', 'localhost:30656')
-    .action((options) => {
+    .option('--game-id <gid>', 'game id')
+    .action((what, options) => {
 
-        // console.log(options);
-        let endpoint = options.endpoint;
+       // console.log(options);
+
+        let endpoint = options.endpoint || 'localhost:30656';
         let idx = endpoint.indexOf(':');
         if (idx === -1) {
             idx = endpoint.length;
@@ -54,7 +56,27 @@ program.command('query')
 
         let peer = new Peer('', addr, port);
         const rpc = new RpcClient(peer);
-        rpc.call('rpc_account_checkNodePow', null).then((data) => {
+
+        let method;
+        let args;
+        switch (what) {
+            case 'pow':
+                method = 'rpc_account_checkNodePow';
+                break;
+            case 'contract':
+                method = 'rpc_account_contract';
+                if(!options.gameId) {
+                    console.log('missing --game-id <gid>');
+                    process.exit(1);
+                }
+                args = {gid: options.gameId};
+                break;
+            default:
+                console.log('not support command ', what);
+                process.exit(1);
+        }
+
+        rpc.call(method, args).then((data) => {
             console.log(JSON.stringify(data, null, 4));
         }).catch((e) => {
             console.error('error', e.message);
