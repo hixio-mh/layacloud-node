@@ -6,6 +6,7 @@ const version = require('./lib/version.js');
 const AppBase = require('./lib/app_base.js');
 const layaNode = require('./lib/layanode');
 const RpcClient = require('./lib/rpc/rpc_client');
+const Peer = require('./lib/p2p/peer');
 const CPMgr = require('./lib/common/child_process_mgr');
 
 program
@@ -38,13 +39,24 @@ program
 
 program.command('query')
     .description('query pow of this node')
+    .option('--endpoint <endpoint>', 'rpc endpoint address', 'localhost:30656')
     .action((options) => {
 
-        //console.log(options);
-        const rpc = new RpcClient();
+        // console.log(options);
+        let endpoint = options.endpoint;
+        let idx = endpoint.indexOf(':');
+        if (idx === -1) {
+            idx = endpoint.length;
+        }
+        let addr = endpoint.substring(0, idx);
+        let port = Number.parseInt(endpoint.substr(idx + 1));
+        if (port <= 0 || isNaN(port)) port = 30656;
+
+        let peer = new Peer('', addr, port);
+        const rpc = new RpcClient(peer);
         rpc.call('rpc_account_checkNodePow', null).then((data) => {
             console.log(JSON.stringify(data, null, 4));
-        }).catch((e)=>{
+        }).catch((e) => {
             console.error('error', e.message);
         });
 
@@ -76,9 +88,9 @@ async function run(params) {
     await layaNode.init(params);
     await layaNode.start();
 
-	//启动ETH交易监听子进程
-	CPMgr.add_child('eth_child', './lib/eth_child.js');
-	logger.info('初始化ETH监听子进程')
-	
+    //启动ETH交易监听子进程
+    CPMgr.add_child('eth_child', './lib/eth_child.js');
+    logger.info('初始化ETH监听子进程')
+
     logger.info(layaNode.getCapabilities());
 }
