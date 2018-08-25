@@ -2,7 +2,7 @@ version: "3"
 services:
   layanode:
     build: .
-    command: --addr 0.0.0.0 --curl http://layacloud-center_layacenter_1:9001
+    command: --addr 0.0.0.0 --curl http://172.18.0.2:9001
 
 networks:
   default:
