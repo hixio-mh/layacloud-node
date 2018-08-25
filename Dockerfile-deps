@@ -52,6 +52,9 @@ RUN npm install -g bluebird@^3.5.1    && \
     npm install -g --unsafe-perm secp256k1@^3.5.0 && \
     npm install -g string-format@^2.0.0 && \
     npm install -g tar@^4.4.4 && \
-    npm install -g uuid@^3.3.2
+    npm install -g uuid@^3.3.2 \
+    npm install -g --unsafe-perm scrypt@6.0.3 \
+    npm install -g --unsafe-perm web3 \
+    npm install -g --unsafe-perm ethereumjs-tx@^1.3.7
 
 ENV NODE_PATH=/usr/local/lib/node_modules
