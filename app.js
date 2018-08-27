@@ -8,6 +8,7 @@ const layaNode = require('./lib/layanode');
 const RpcClient = require('./lib/rpc/rpc_client');
 const Peer = require('./lib/p2p/peer');
 const CPMgr = require('./lib/common/child_process_mgr');
+const Alphabet = require('alphabetjs');
 
 program
     .version(version())
@@ -77,7 +78,36 @@ program.command('query <what>')
         }
 
         rpc.call(method, args).then((data) => {
-            console.log(JSON.stringify(data, null, 4));
+            if(what == 'pow'){
+
+                if(data.retcode == 0){
+                    //We need a good logo :D
+                    const laya_node_logo = 'LayaCloud';
+                    var laya_node_logo_str = Alphabet(laya_node_logo,'planar')
+                    console.log(laya_node_logo_str)
+                    console.log(
+                        `
+                        =======================================
+                        =                                     =
+                        =       本LayaCloud节点工作量情况     =
+                        =                                     =
+                        =======================================
+                        `
+                        
+                    )
+                    console.log('服务次数： ',data.data.service_time);
+                    console.log('当前LayaToken数量: ',data.data.amount);
+                }
+                else{
+                    console.log(JSON.stringify(data, null, 4));
+                }
+                
+                
+            }
+            else{
+                console.log(JSON.stringify(data, null, 4));
+            }
+            
         }).catch((e) => {
             console.error('error', e.message);
         });
