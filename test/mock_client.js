@@ -69,7 +69,9 @@ async function login(command) {
     ws.on('message', function incoming(data) {
         console.log(data);
         let obj = JSON.parse(data);
-        loginNode = new Peer(obj.params.node_hash_address, obj.params.ip_address, 30656);
+        if (obj.url === 'user.logined') {
+            loginNode = new Peer(obj.params.node_hash_address, obj.params.ip_address, 30656);
+        }
 
     });
 }
