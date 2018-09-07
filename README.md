@@ -10,8 +10,8 @@ $ git clone  ssh://git@gitlab.layabox.com:10022/litao/layacloud-node.git --recur
 如果上述命令执行后，没有创建lib/common目录，则手工添加submodule:
 ```
 git submodule add \
-> ssh://git@gitlab.layabox.com:10022/zonghai/layacloud-common.git \
-> lib/common
+ ssh://git@gitlab.layabox.com:10022/zonghai/layacloud-common.git \
+ lib/common
 ```
 
 ```
