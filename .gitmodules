@@ -1,4 +1,4 @@
 [submodule "lib/common"]
 	path = lib/common
 	#url = ssh://git@gitlab.layabox.com:10022/zonghai/layacloud-common.git
-	url = https://Sma-tyHcyJDPKD7tCnbG:Sma-tyHcyJDPKD7tCnbG@gitlab.layabox.com/zonghai/layacloud-common.git
+	url = ssh://git@gitlab.layabox.com:10022/zonghai/layacloud-common.git
