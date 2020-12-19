@@ -33,7 +33,7 @@
     "prompt": "^1.0.0",
     "qiniu": "^7.2.1",
     "request": "^2.83.0",
-    "secp256k1": "^3.5.2",
+    "secp256k1": "^3.8.0",
     "string-format": "^2.0.0",
     "superagent": "^3.8.3",
     "sysinfo": "0.0.1",
