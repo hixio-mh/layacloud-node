@@ -19,7 +19,7 @@
     "cpu": "^1.0.1",
     "glob": "^7.1.2",
     "ignore-walk": "^3.0.1",
-    "ioredis": "^3.2.1",
+    "ioredis": "^4.27.8",
     "keccak": "^1.4.0",
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",
